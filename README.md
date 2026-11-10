@@ -6,7 +6,9 @@ An autonomous robotic pick-and-place system that uses RGB-D vision to detect, lo
 
 ## Demo
 
-WIP
+<p align="center">
+  <img src="media/pickup_and_sort.gif" width="750" alt="Vision-Guided Pick and Sort Demo">
+</p>
 
 ## Features
 
@@ -70,7 +72,39 @@ source install/setup.bash
 
 ## Usage
 
-WIP
+After building the workspace, source the setup file in each terminal:
+
+```bash
+source ~/<workspace_name>/install/setup.bash
+```
+
+### 1. Launch Simulation
+
+Open the first terminal and launch the robot simulation along with the MoveIt configuration.
+
+```bash
+ros2 launch arm_bringup pnp_test.launch.xml
+```
+
+### 2. Enable Simulation Time
+
+Open a second terminal and enable simulation time for MoveIt.
+
+```bash
+ros2 param set /move_group use_sim_time true
+```
+
+### 3. Run Pick-and-Place
+
+Open a third terminal and start the autonomous pick-and-place system.
+
+```bash
+ros2 run arm_system_tests pickup_n_sort
+```
+
+### Expected Result
+
+The robot detects cubes using RGB-D camera, estimates their 3D positions, picks them up, and sorts and stacks them according to their colors.
 
 ## Future Improvements
 
